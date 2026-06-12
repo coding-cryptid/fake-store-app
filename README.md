@@ -1,1 +1,1 @@
-# fake-store-app
+# 🌐 React Module Project - FakeStoreApp
