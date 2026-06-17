@@ -9,4 +9,11 @@ function ProductList() {
     const [error, SetError] = UseState(null);
 }
 
+useEffect(() => {
+    axios.get('https://fakestoreapi.com/products')
+    .then(res => setProducts(res.data))
+    .catch(() => setError("Failed to load products. Please try again later."))
+    .finally(() => setLoading(false));
+}, []);
+
 export default ProductList;
