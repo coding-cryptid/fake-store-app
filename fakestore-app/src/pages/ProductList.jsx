@@ -7,13 +7,40 @@ function ProductList() {
     const [products, setProducts] = UseState([]);
     const [loading, SetLoading] = useState(true);
     const [error, SetError] = UseState(null);
-}
 
-useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-    .then(res => setProducts(res.data))
-    .catch(() => setError("Failed to load products. Please try again later."))
-    .finally(() => setLoading(false));
-}, []);
+    useEffect(() => {
+        axios.get('https://fakestoreapi.com/products')
+            .then(res => setProducts(res.data))
+            .catch(() => setError("Failed to load products. Please try again later."))
+            .finally(() => setLoading(false));
+    }, []);
+
+    if (loading) {
+        return (
+            <Container className="text-center mt-5">
+                <Spinner animation="border" />
+            </Container>
+        );
+    }
+
+    if (error) {
+        return (
+            <Container className='mt-4'>
+                <Alert variant="danger">{error}</Alert>
+            </Container>
+        );
+    }
+
+    return (
+        <Container className='mt-4'>
+            <h2 className='mb-4'>Our Products</h2>
+            <Row>
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </Row>
+        </Container>
+    );
+}
 
 export default ProductList;
