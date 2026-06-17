@@ -9,4 +9,27 @@ function ProductDetails() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        axios.get(`https://fakestoreapi.com/products/${id}`)
+            .then(res => setProduct(res.data))
+            .catch(() => setError('Failed to load product details.'))
+            .finally(() => setLoading(false));
+    }, [id]);
+
+    if (loading) {
+        return (
+            <Container className="text-center mt-5">
+                <Spinner animation="border" />
+            </Container>
+        );
+    }
+
+    if (error) {
+        return (
+            <Container className="mt-4">
+                <Alert variant="danger">{error}</Alert>
+            </Container>
+        );
+    }
 }
