@@ -62,3 +62,5 @@ function ProductDetails() {
         </Container>
     );
 }
+
+export default ProductDetails;
