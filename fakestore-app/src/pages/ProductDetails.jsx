@@ -32,4 +32,33 @@ function ProductDetails() {
             </Container>
         );
     }
+
+    return (
+        <Container className="mt-4">
+            <Row>
+                <Col md={4} className="text-center">
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                        className="img-fluid"
+                        style={{ maxHeight: '350px', objectFit: 'contain' }}
+                    />
+                </Col>
+                <Col md={8}>
+                    <h2>{product.title}</h2>
+                    <p className="text-muted text-capitalize">Category: {product.category}</p>
+                    <p>{product.description}</p>
+                    <h4 className="text-success">${product.price}</h4>
+
+                    <div className="d-flex gap-2 mt-4">
+                        <Button variant="success">Add to Cart</Button>
+                        <Button variant="warning" onClick={() => navigate(`/edit-product/${id}`)}>
+                            Edit
+                        </Button>
+                        <Button variant="danger">Delete</Button>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
