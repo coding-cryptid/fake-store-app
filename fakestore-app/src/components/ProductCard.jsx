@@ -18,7 +18,7 @@ function ProductCard({ product }) {
           <Button
             variant="primary"
             className="mt-auto"
-            onClick={() => navigate(`/products/${product.id}`)}
+            onClick={() => navigate(`/product/${product.id}`)}
           >
             View Details
           </Button>
