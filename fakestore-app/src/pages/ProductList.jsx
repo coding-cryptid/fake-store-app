@@ -4,9 +4,9 @@ import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 
 function ProductList() {
-    const [products, setProducts] = UseState([]);
-    const [loading, SetLoading] = useState(true);
-    const [error, SetError] = UseState(null);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
