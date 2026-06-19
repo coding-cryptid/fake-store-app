@@ -64,6 +64,8 @@ function ProductDetails() {
                     <p>{product.description}</p>
                     <h4 className="text-success">${product.price}</h4>
 
+                    {deleteError && <Alert variant="danger">{deleteError}</Alert>}
+
                     <div className="d-flex gap-2 mt-4">
                         <Button variant="success">Add to Cart</Button>
                         <Button variant="warning" onClick={() => navigate(`/edit-product/${id}`)}>
